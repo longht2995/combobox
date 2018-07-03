@@ -1,0 +1,16 @@
+<zk>
+	<window apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('greenglobal.lastdemo.MyViewModel')"
+		validationMessages="@id('vmsgs')" width="600px" vflex="1">
+		<combobox readonly="true" model="@load(vm.listThanhpho)" placeholder="Tỉnh thành" selectedItem="@bind(vm.selectedThanhpho)" onSelect="@command('showQuan')">
+			<template name="model">
+				<comboitem label="@load(each.name)"></comboitem>
+			</template>
+		</combobox>
+		<combobox model="@load(vm.listQuan)" readonly="true" placeholder="Quận huyện">
+			<template name="model">
+				<comboitem label="@load(each.name)"></comboitem>
+			</template>
+		</combobox>
+	</window>
+</zk>

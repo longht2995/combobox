@@ -1,0 +1,43 @@
+<zk>
+	<window apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('greenglobal.lastdemo.MyViewModel')"
+		validationMessages="@id('vmsgs')" width="600px" vflex="1">
+		<combobox value="Chọn Tỉnh Thành" model="@load(vm.listThanhpho)" selectedItem="@bind(vm.selectedThanhpho)" onSelect="@command('showQuan')">
+			<template name="model">
+				<comboitem label="@load(each.name)"></comboitem>
+			</template>
+		</combobox>
+		<combobox value="Chọn Quận Huyện" model="@load(vm.listQuan)">
+			<template name="model">
+				<comboitem label="@load(each.name)"></comboitem>
+			</template>
+		</combobox>
+		<grid form="@id('fx') @load(vm.user) @save(vm.user,before='submit') @validator('beanValidator')">
+			<rows>
+				<row>
+					<label value="Username"></label>
+					<textbox value="@bind(fx.username)" width="150px"></textbox>
+					
+					<label class="error" value="@load(vmsgs['tb'])" />
+				</row>
+				<row>
+					<label value="Password"></label>
+					<textbox value="" width="150px"></textbox>
+				</row>
+				<row>
+					<label value="Re-type Password"></label>
+					<textbox value="" width="150px"></textbox>
+				</row>
+				<row>
+					<label value="Email"></label>
+					<textbox value="" width="150px"></textbox>
+				</row>
+				<row>
+					<cell colspan="3">
+						<button label="Submit" onClick="@command('submit')"></button>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

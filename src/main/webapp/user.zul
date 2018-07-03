@@ -1,0 +1,25 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="new page title" border="normal"
+		validationMessages="@id('vmsgs')"
+		viewModel="@id('vm')@init('greenglobal.lastdemo.entity.User')">
+		<grid>
+			<rows>
+				
+				<row>
+					<label value="Email"></label>
+					<textbox value="@bind(vm.email) @save(vm.email,before='submit') @validator('greenglobal.lastdemo.entity.UserValidator', email = vm.email)"></textbox>
+					<label class="error" value="@load(vmsgs[self.previousSibling])" />
+				</row>
+				<row>
+					<cell colspan="3">
+						<button label="Submit"
+							onClick="@command('submit')">
+						</button>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+
+	</window>
+</zk>
